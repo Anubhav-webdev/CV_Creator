@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>CV Builder</title>
+<title>CV Builder – NeoPhoenix</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:wght@400;600;700&family=Roboto:wght@400;500;700&family=Merriweather:wght@400;700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:wght@400;600;700&family=Roboto:wght@400;500;700&family=Merriweather:wght@400;700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&family=Lato:wght@400;700&family=Inter:wght@400;600;700&family=Source+Sans+3:wght@400;600;700&family=EB+Garamond:wght@400;600;700&family=Libre+Baskerville:wght@400;700&family=Carlito:wght@400;700&display=swap">
 <style>
 :root{--teal:#0e8a8a;--navy:#1b4d5c;--bg:#eef3f4;--card:#fff;--text:#1d2a2e;--muted:#5d6e73;--line:#d3dde0;--inp:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#10181b;--card:#1a2529;--text:#e6eef0;--muted:#9bb0b6;--line:#33454b;--inp:#121b1e}}
@@ -30,66 +30,58 @@ h1.app{font-size:1.6rem;color:var(--navy);margin:8px 0}
 fieldset{border:1px solid var(--line);border-radius:8px;margin:0 0 14px;padding:12px 14px;background:var(--card)}
 legend{font-weight:700;color:var(--teal);padding:0 6px}
 label{display:block;font-size:.88rem;color:var(--muted);margin-bottom:8px}
-input,textarea{width:100%;font:inherit;color:var(--text);background:var(--inp);border:1px solid var(--line);border-radius:6px;padding:8px 10px;margin-top:3px}
+input,textarea,select{width:100%;font:inherit;color:var(--text);background:var(--inp);border:1px solid var(--line);border-radius:6px;padding:8px 10px;margin-top:3px}
+select:focus-visible{outline:3px solid #f0a500;outline-offset:2px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
 @media (max-width:620px){.grid{grid-template-columns:1fr}}
 .row{border:1px dashed var(--line);border-radius:6px;padding:10px;margin-bottom:10px}
 .row .grid{margin-bottom:6px}
 .ph-prev{width:90px;height:110px;object-fit:cover;border:1px solid var(--line);display:block;margin:6px 0}
 .hint{color:var(--muted);font-size:.85rem;margin:4px 0 8px}
+.note{background:#fff4d6;border:1px solid #f0a500;color:#5a3d00;border-radius:8px;padding:10px 38px 10px 14px;margin:0 0 12px;font-size:.9rem;position:relative}
+.note-x{position:absolute;top:6px;right:8px;background:none;border:0;color:inherit;font-size:1.4rem;line-height:1;cursor:pointer;padding:2px 6px;border-radius:4px}
+.note-x:focus-visible{outline:3px solid #f0a500;outline-offset:1px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .note{background:#3a2e10;color:#ffe2a0}}
+:root[data-theme="dark"] .note{background:#3a2e10;color:#ffe2a0}
 dialog{width:min(640px,94vw);border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--text);padding:16px}
 dialog::backdrop{background:rgba(0,0,0,.5)}
 .err{color:#c0392b;font-size:.9rem;min-height:1.2em}
 #pwrap{overflow:hidden;background:#8a9a9f;padding:12px 0;border-radius:8px}
-
-/* Footer Styling */
 footer.app-footer{margin-top:24px;padding:16px 0 8px;border-top:1px solid var(--line);text-align:center;font-size:.88rem;color:var(--muted)}
 footer.app-footer strong{color:var(--teal);font-weight:600}
 
-/* CV paper */
-.paper{width:794px;min-height:1123px;margin:0 auto;background:#fff;color:#222;padding:44px 46px;font-family:"Segoe UI",Calibri,Arial,sans-serif;font-size:14px;line-height:1.45;transform-origin:top left}
+/* CV paper: fixed A4 (794 x 1122 px); content auto-shrinks to fit one page */
+.paper{width:794px;height:1122px;overflow:hidden;margin:0 auto;background:#fff;color:#222;padding:44px 46px;font-family:var(--ff,'Segoe UI',Calibri,Arial,sans-serif);font-size:var(--fs,14px);line-height:1.45;transform-origin:top left;--ac:#0e8a8a;--ac2:#1b4d5c;print-color-adjust:exact;-webkit-print-color-adjust:exact}
 .paper header{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:12px}
-.paper h1{margin:0;font-size:46px;line-height:1.05;color:#1b4d5c;letter-spacing:.5px;text-transform:uppercase;font-weight:800}
-.paper .dp{color:#0e8a8a;font-weight:700;text-transform:uppercase;margin-top:8px}
+.paper h1{margin:0;font-size:3.3em;line-height:1.05;color:var(--ac2);letter-spacing:.5px;text-transform:uppercase;font-weight:800}
+.paper .dp{color:var(--ac);font-weight:700;text-transform:uppercase;margin-top:8px}
 .paper header img{width:118px;height:148px;object-fit:cover;border:1px solid #888;flex:none}
-.paper h2{font-size:18px;color:#1b4d5c;margin:16px 0 6px;padding-bottom:3px;border-bottom:2px solid #0e8a8a;text-transform:uppercase}
+.paper h2{font-size:1.28em;color:var(--ac2);margin:16px 0 6px;padding-bottom:3px;border-bottom:2px solid var(--ac);text-transform:uppercase;display:flex;align-items:center;gap:8px}
 .paper p{margin:0}.paper ul{margin:2px 0 0;padding-left:20px}
-
-/* Education Preview Grid Layout */
-.paper .ed-item{margin-bottom:10px;padding-bottom:6px;border-bottom:1px dashed #e2e8f0}
-.paper .ed-item:last-child{border-bottom:none;margin-bottom:4px;padding-bottom:0}
-.paper .ed-grid{display:grid;grid-template-columns:1.5fr 2fr 1fr 1fr;gap:8px;align-items:baseline}
-.paper .ed-deg{font-weight:700;color:#1b4d5c}
-.paper .ed-inst{font-weight:600;color:#333}
-.paper .ed-dur{color:#555;font-size:0.95em}
-.paper .ed-meta{color:#0e8a8a;font-weight:600;text-align:right}
-
-/* Project Styling */
-.paper .pj-wrap{margin-bottom:10px}
-.paper .pj-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px}
-.paper .pj-title{font-weight:700;font-size:1.02em;color:#111}
-.paper .pj-links{display:inline-flex;gap:10px;font-size:0.85em}
-.paper .pj-links a{display:inline-flex;align-items:center;gap:4px;color:var(--ac);text-decoration:none;font-weight:600}
-.paper .pj-links a:hover{text-decoration:underline}
-.paper .pj-list{list-style:none;padding-left:4px;margin-top:4px}
-.paper .pj-list li:before{content:"\2022";color:var(--ac);margin-right:6px}
-
-.paper .sk{columns:1}
-select{font:inherit;color:var(--text);background:var(--inp);border:1px solid var(--line);border-radius:6px;padding:8px 10px;width:100%;margin-top:3px}
-select:focus-visible{outline:3px solid #f0a500;outline-offset:2px}
-.styl{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:10px}
-.styl label{margin:0}.styl select{width:auto}
-#s-sw{display:flex;gap:8px;padding-bottom:6px}
-.sw{width:28px;height:28px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line);cursor:pointer;padding:0}
-.sw.on{box-shadow:0 0 0 3px var(--text)}
-.paper{font-family:var(--ff,'Segoe UI',Calibri,Arial,sans-serif);font-size:var(--fs,14px);--ac:#0e8a8a;--ac2:#1b4d5c;print-color-adjust:exact;-webkit-print-color-adjust:exact}
-.paper h1{color:var(--ac2)}.paper .dp{color:var(--ac)}
-.paper h2{color:var(--ac2);border-bottom-color:var(--ac);display:flex;align-items:center;gap:8px}
 .paper svg{width:1em;height:1em;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .paper h2 svg{width:19px;height:19px;color:var(--ac)}
 .paper .ct{display:flex;flex-wrap:wrap;gap:5px 16px;margin-top:8px}
 .paper .ct span,.paper .ct a{display:inline-flex;align-items:center;gap:6px;color:inherit;text-decoration:none}
 .paper .ct svg{color:var(--ac);width:15px;height:15px}
+/* Education table */
+.paper .ed-tbl{width:100%;border-collapse:collapse;font-size:.95em}
+.paper .ed-tbl th{background:var(--ac2);color:#fff;text-align:left;padding:5px 8px;font-weight:600;border:1px solid var(--ac2)}
+.paper .ed-tbl td{padding:5px 8px;border:1px solid #cfd8dc;vertical-align:top}
+.paper .ed-tbl tbody tr:nth-child(even) td{background:#f4f8f9}
+.paper .ed-tbl td:first-child{font-weight:700;color:var(--ac2)}
+/* Projects */
+.paper .pj-wrap{margin-bottom:10px}
+.paper .pj-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px}
+.paper .pj-title{font-weight:700;font-size:1.02em;color:#111}
+.paper .pj-links{display:inline-flex;gap:10px;font-size:.85em}
+.paper .pj-links a{display:inline-flex;align-items:center;gap:4px;color:var(--ac);text-decoration:none;font-weight:600}
+.paper .pj-list{list-style:none;padding-left:4px;margin-top:4px}
+.paper .pj-list li:before{content:"\2022";color:var(--ac);margin-right:6px}
+.styl{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:10px}
+.styl label{margin:0}.styl select{width:auto}
+#s-sw{display:flex;gap:8px;padding-bottom:6px}
+.sw{width:28px;height:28px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line);cursor:pointer;padding:0}
+.sw.on{box-shadow:0 0 0 3px var(--text)}
 @page{size:A4;margin:0}
 @media print{
  html,body{background:#fff!important}
@@ -103,21 +95,20 @@ select:focus-visible{outline:3px solid #f0a500;outline-offset:2px}
 <body>
 <div class="wrap">
 <main>
-<!-- LIST VIEW -->
 <section id="v-list">
  <div class="bar"><h1 class="app">My CVs</h1><div class="acts"><button class="btn alt" id="b-objs">Objectives</button><button class="btn" id="b-new">+ New CV</button></div></div>
+ <div class="note"><button type="button" class="note-x" aria-label="Close notice">×</button>🔒 <b>Privacy:</b> every CV is stored only in this browser and is <b>deleted automatically 24 hours after it is created</b>. Download your PDF before it expires.</div>
  <div id="list"></div>
 </section>
 
-<!-- FORM VIEW -->
 <section id="v-form" hidden>
  <div class="bar"><h1 class="app" id="ftitle">New CV</h1><button class="btn alt" id="b-cancel" type="button">Back to list</button></div>
+ <div class="note"><button type="button" class="note-x" aria-label="Close notice">×</button><b>Advice before you start:</b> fill in every section (details, objective, education, projects, skills, certificates), check spelling, then press <b>Save &amp; preview</b> and <b>Download PDF</b> straight away. For your security this CV will be deleted automatically 24 hours after creation.</div>
  <form id="form" novalidate>
   <fieldset><legend>Personal details</legend>
    <div class="grid">
     <label>Full name *<input id="f-name" required maxlength="60"></label>
     <label>Department / Course *<input id="f-dept" list="dl" required maxlength="80" placeholder="e.g. Mechanical Engineering"></label>
-    <label>Location<input id="f-place" maxlength="80" placeholder="City, State"></label>
     <label>Phone *<input id="f-phone" type="tel" required></label>
     <label>Email *<input id="f-email" type="email" required></label>
    </div>
@@ -125,17 +116,17 @@ select:focus-visible{outline:3px solid #f0a500;outline-offset:2px}
    <img id="photo-prev" class="ph-prev" alt="Photo preview" hidden><button type="button" class="btn sm danger" id="photo-rm" hidden>Remove photo</button>
   </fieldset>
 
-  <fieldset><legend>Links (LinkedIn, GitHub, portfolio…)</legend><div id="g-link"></div><button type="button" class="btn alt sm" data-add="link">+ Add link</button><p class="hint">Add as many as you like: GitHub, LinkedIn, portfolio, Behance, X, YouTube or your own site. They become clickable icons on the CV.</p></fieldset>
+  <fieldset><legend>Links (LinkedIn, GitHub, portfolio…)</legend><div id="g-link"></div><button type="button" class="btn alt sm" data-add="link">+ Add link</button><p class="hint">Add as many as you like. They become clickable icons on the CV.</p></fieldset>
   <fieldset><legend>Career objective</legend>
    <div class="grid"><label>I am<select id="f-level"><option>a Diploma student</option><option>a final-year student</option><option>a fresh graduate</option><option>a skilled professional</option></select></label><label>Target role<input id="f-role" maxlength="60" placeholder="e.g. CNC Operator trainee"></label></div>
    <label>Key strengths (comma separated)<input id="f-focus" maxlength="120" placeholder="e.g. CNC programming, engineering drawing"></label>
    <label>Objective<textarea id="f-obj" rows="5" maxlength="700" placeholder="Write your own, or generate one from the department."></textarea></label>
    <div class="acts"><button type="button" class="btn alt sm" id="gen">Generate from department</button><button type="button" class="btn alt sm" id="b-objs2">Manage objectives</button><button type="button" class="btn alt sm" id="b-saveobj">Save to my objectives</button></div>
-   <p class="hint">Fill in the level, target role and strengths, then press Generate. Each click gives the next saved template for the department. You can edit the text freely, then save it for reuse.</p>
+   <p class="hint">Each click on Generate gives the next saved template for the department. Edit freely, then save it for reuse.</p>
   </fieldset>
 
-  <fieldset><legend>Education</legend><div id="g-edu"></div><button type="button" class="btn alt sm" data-add="edu">+ Add education</button></fieldset>
-  <fieldset><legend>Academic projects</legend><div id="g-proj"></div><button type="button" class="btn alt sm" data-add="proj">+ Add project</button><p class="hint">Only the first 3 feature bullet points will be displayed on the CV preview.</p></fieldset>
+  <fieldset><legend>Education</legend><div id="g-edu"></div><button type="button" class="btn alt sm" data-add="edu">+ Add education</button><p class="hint">Shown on the CV as a table with headers: Degree / Course, Institute / School, Duration, Marks/CGP.</p></fieldset>
+  <fieldset><legend>Academic projects</legend><div id="g-proj"></div><button type="button" class="btn alt sm" data-add="proj">+ Add project</button><p class="hint">Only the first 3 feature bullet points are shown on the CV.</p></fieldset>
   <fieldset><legend>Skills &amp; interests</legend>
    <label>Technical skills (one per line)<textarea id="f-skills" rows="4"></textarea></label>
    <label>Areas of interest (comma separated)<input id="f-interests"></label>
@@ -146,14 +137,13 @@ select:focus-visible{outline:3px solid #f0a500;outline-offset:2px}
   <div class="err" id="err" role="alert"></div>
   <button class="btn" type="submit">Save &amp; preview</button>
  </form>
- <h3> </h3>
 </section>
 
-<!-- PREVIEW VIEW -->
 <section id="v-prev" hidden>
  <div class="bar noprint"><h1 class="app">Preview</h1>
-  <div class="acts"><button class="btn alt" id="p-back">Back to list</button><button class="btn alt" id="p-edit">Edit</button><button class="btn" id="p-pdf">Download PDF</button></div></div>
- <p class="hint noprint">Download PDF opens the print dialog: choose “Save as PDF” as the destination (turn off headers and footers).</p>
+  <div class="acts"><button class="btn alt" id="p-back">Back to list</button><button class="btn alt" id="p-edit">Edit</button><button class="btn danger" id="p-del">Delete now</button><button class="btn" id="p-pdf">Download PDF</button></div></div>
+ <div class="note noprint" id="p-note"></div>
+ <p class="hint noprint">Download PDF opens the print dialog: choose “Save as PDF” (paper size A4, margins none, headers and footers off). The CV always fits one A4 page; long content shrinks automatically.</p>
  <div class="styl noprint"><label>Font<select id="s-font"></select></label><label>Text size<select id="s-size"><option value="13">Small</option><option value="14">Medium</option><option value="15">Large</option></select></label><div id="s-sw" aria-label="Accent colour"></div></div>
  <div id="pwrap"><div class="paper" id="paper"></div></div>
 </section>
@@ -184,38 +174,104 @@ const SV=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));return true}catch
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 const DEF2={
- 'Mechanical Engineering':[
-  'I am {level} in {dept} seeking {role}, where I can apply {skills} and gain hands-on experience in machining, manufacturing and quality inspection.',
-  'A hardworking {dept} candidate looking for {role} in a manufacturing unit. I bring {skills}, a quick-learning attitude and respect for workshop safety.',
-  'To begin my career in industry and grow with the organisation, I am seeking {role} where {skills} can support production and maintenance work.',
-  'As {level} in {dept}, I am eager to take up {role} and build on {skills} through practical shop-floor learning.'],
- 'Civil Engineering':[
-  'I am {level} in {dept} seeking {role} in construction or site work, where I can apply {skills} and learn project execution.',
-  'A motivated {dept} candidate aiming for {role}, with a focus on site quality, estimation and safe working practices, using {skills}.',
-  'To start my career in the construction industry, I am looking for {role} where {skills} can add value to the project team.'],
- 'Electrical Engineering':[
-  'I am {level} in {dept} looking for {role} where I can use {skills} in installation, testing and maintenance of electrical systems.',
-  'A dedicated {dept} candidate seeking {role} in the power or automation sector, ready to apply {skills} while following safety standards.',
-  'To begin my career in {dept}, I am seeking {role} and want to grow through hands-on work that builds on {skills}.'],
- 'Computer Science & Technology':[
-  'I am {level} in {dept} seeking {role} where I can apply {skills} to build reliable software and keep learning new technologies.',
-  'A curious {dept} candidate looking for {role}, with a strong interest in problem solving, web development and teamwork, using {skills}.',
-  'To launch my career in IT by taking up {role}, where {skills} can contribute to real projects.'],
- 'Electronics & Telecommunication':[
-  'I am {level} in {dept} looking for {role} where I can apply {skills} in testing, troubleshooting and electronic assembly.',
-  'A motivated {dept} candidate seeking {role}, ready to learn on the job and contribute through {skills}.',
-  'To start my career in electronics or communication, I am seeking {role} where {skills} can be put into practice.'],
- 'General':[
-  'I am {level} in {dept} looking for {role} where I can apply {skills} and gain practical experience.',
-  'A hardworking and quick-learning {dept} candidate seeking {role}, ready to improve my skills and contribute to the team.',
-  'To join a reputed organisation by taking up {role}, and to grow through learning, discipline and {skills}.']
+  "Mechanical Engineering": [
+    "A motivated {level} in {dept} seeking an opportunity as a {role}. Eager to apply my knowledge of {skills} while developing practical experience in manufacturing, machining and production processes.",
+
+    "An enthusiastic {dept} candidate with a foundation in {skills}, looking to begin a career as a {role}. Willing to learn from experienced professionals and contribute to daily operations while maintaining quality and safety standards.",
+
+    "Seeking an entry-level {role} opportunity where I can put my technical knowledge of {skills} into practice, strengthen my workshop skills and grow professionally in the manufacturing industry.",
+
+    "As a {level} in {dept}, I am interested in starting my career in the mechanical industry. I bring a basic understanding of {skills}, a practical approach to learning and a commitment to quality work.",
+
+    "A dedicated and quick-learning {dept} candidate aiming for a {role} position. Interested in production, machine operations and maintenance, with a willingness to develop hands-on skills and take on new responsibilities."
+  ],
+
+  "Civil Engineering": [
+    "A motivated {level} in {dept} seeking an entry-level {role} opportunity. Interested in applying my knowledge of {skills} and gaining practical experience in construction, site supervision and project execution.",
+
+    "An enthusiastic civil engineering candidate with a basic understanding of {skills}, looking to begin a career as a {role}. Eager to learn site operations, follow engineering standards and contribute to project activities.",
+
+    "Looking for an opportunity as a {role} where I can apply my academic knowledge, develop practical construction skills and gain experience in site management and quality control.",
+
+    "A dedicated {dept} candidate interested in construction and infrastructure development. Ready to apply {skills}, learn from experienced engineers and contribute responsibly to project work.",
+
+    "Seeking to build a career in the construction industry through a {role} position. I am keen to improve my technical abilities, understand real-world project requirements and grow as a professional."
+  ],
+
+  "Electrical Engineering": [
+    "A motivated {level} in {dept} seeking an entry-level {role} position. Eager to apply my knowledge of {skills} and gain practical experience in electrical installation, testing and maintenance.",
+
+    "An enthusiastic electrical engineering candidate looking to start a career as a {role}. Interested in electrical systems, troubleshooting and maintenance, with a strong willingness to learn and follow workplace safety practices.",
+
+    "Seeking an opportunity as a {role} where I can use my technical understanding of {skills}, improve my practical abilities and contribute to electrical operations and maintenance activities.",
+
+    "A dedicated {dept} candidate with an interest in power systems and industrial automation. Looking forward to applying {skills} while developing hands-on experience in a professional work environment.",
+
+    "Looking to begin my professional journey in the electrical industry as a {role}. I am eager to learn new techniques, handle technical responsibilities and continuously improve my skills."
+  ],
+
+  "Computer Science & Technology": [
+    "A motivated {level} in {dept} seeking an entry-level {role} opportunity. Interested in applying my knowledge of {skills} to real-world projects while developing my technical and problem-solving abilities.",
+
+    "An enthusiastic computer science candidate with an interest in software and web development. Looking for a {role} position where I can use {skills}, learn new technologies and contribute to meaningful projects.",
+
+    "Seeking an opportunity as a {role} to apply my technical knowledge of {skills}, gain industry experience and continue developing reliable, user-focused software solutions.",
+
+    "A dedicated {dept} student with a passion for technology and problem-solving. Familiar with {skills} and eager to work with a team, learn from experienced developers and improve through practical projects.",
+
+    "Looking to start my career in the IT industry as a {role}. I am interested in building practical solutions, exploring modern technologies and using {skills} to contribute to development projects."
+  ],
+
+  "Electronics & Telecommunication": [
+    "A motivated {level} in {dept} seeking an entry-level {role} position. Eager to apply my knowledge of {skills} and gain practical experience in electronic systems, testing and troubleshooting.",
+
+    "An enthusiastic electronics candidate looking to begin a career as a {role}. Interested in circuit analysis, electronic equipment and communication systems, with a willingness to develop practical technical skills.",
+
+    "Seeking an opportunity as a {role} where I can apply {skills}, strengthen my understanding of electronic systems and contribute to testing, maintenance and technical operations.",
+
+    "A dedicated {dept} candidate interested in electronics and communication technology. Ready to learn industry practices, work with technical equipment and develop hands-on experience.",
+
+    "Looking to begin my professional career in the electronics industry. I am eager to improve my technical knowledge, take on new challenges and contribute responsibly as a {role}."
+  ],
+
+  "General": [
+    "A motivated {level} in {dept} seeking an entry-level {role} opportunity. Eager to apply my knowledge of {skills}, gain practical experience and develop professionally within a growing organisation.",
+
+    "A hardworking and responsible candidate with a willingness to learn and adapt. Looking for a {role} position where I can apply {skills}, take on new responsibilities and contribute to the team's goals.",
+
+    "Seeking an opportunity as a {role} to begin my professional career, build practical experience and use my existing skills while learning from experienced professionals.",
+
+    "An enthusiastic and quick-learning {dept} candidate interested in starting a career in a professional work environment. Bringing {skills}, a positive attitude and a commitment to continuous improvement.",
+
+    "Looking for an entry-level opportunity where I can put my knowledge and abilities into practice, gain valuable industry experience and grow through teamwork, discipline and continuous learning."
+  ]
 };
+
 let cvs=LS('cvs',[]),objs=LS('objs',null);
 if(!objs||typeof objs!=='object'||LS('objsv',0)<2){objs=JSON.parse(JSON.stringify(DEF2));SV('objs',objs);SV('objsv',2)}
 let editId=null,curId=null,photo='',gi={};
 
+/* ---------- 24-hour auto delete ---------- */
+const TTL=864e5;
+function left(c){const m=Math.max(0,c.created+TTL-Date.now());return Math.floor(m/36e5)+'h '+Math.floor(m%36e5/6e4)+'m'}
+function purge(){
+ const n=Date.now(),b=cvs.length;
+ cvs.forEach(c=>{if(!c.created)c.created=c.updated||n});
+ cvs=cvs.filter(c=>n-c.created<TTL);
+ SV('cvs',cvs);
+ return b-cvs.length;
+}
+function sweep(){
+ const gone=purge();
+ if(!gone)return;
+ const open=!$('#v-list').hidden===false&&curId&&!cvs.some(x=>x.id===curId);
+ renderList();
+ if(open){alert('For your security this CV was deleted automatically after 24 hours.');show('list')}
+}
+function noteFor(c){const d=new Date(c.created+TTL);$('#p-note').hidden=false;$('#p-note').innerHTML='<button type="button" class="note-x" aria-label="Close notice">×</button><b>Security notice:</b> download your PDF now. This CV and its personal data are deleted automatically on '+esc(d.toLocaleString())+' ('+left(c)+' left).'}
+
 const G={
- edu:[['deg','Degree / Course'],['inst','Institute / School'],['dur','Duration (e.g. 2024 – Present)'],['score','Score / Location']],
+ edu:[['deg','Degree / Course'],['inst','Institute / School'],['dur','Duration (e.g. 2024 – Present)'],['score','Marks/CGP']],
  proj:[['title','Project title'],['github','GitHub Link (https://...)'],['demo','Demo Link (https://...)'],['pts','Key Features (Max 3 shown, one per line)','ta']],
  cert:[['title','Certificate'],['org','Organisation'],['yr','Year']],
  link:[['type','Type','sel'],['url','URL (https://…)']]
@@ -233,22 +289,22 @@ $$('[data-add]').forEach(b=>b.onclick=()=>addRow(b.dataset.add));
 function show(v){['list','form','prev'].forEach(x=>$('#v-'+x).hidden=x!==v);window.scrollTo(0,0);if(v==='prev')fit()}
 function depts(){$('#dl').innerHTML=Object.keys(objs).map(d=>`<option value="${esc(d)}">`).join('')}
 
-/* ---------- LIST (Read / Delete / Duplicate) ---------- */
+/* ---------- LIST ---------- */
 function renderList(){
  const L=$('#list');
  if(!cvs.length){L.innerHTML='<div class="card">No CVs yet. Choose “New CV” to create your first one.</div>';return}
- L.innerHTML=cvs.slice().sort((a,b)=>b.updated-a.updated).map(c=>`<div class="card item"><div><b>${esc(c.name)}</b><br><small>${esc(c.dept)} · updated ${new Date(c.updated).toLocaleDateString()}</small></div><div class="acts"><button class="btn sm" data-a="view" data-id="${c.id}">View</button><button class="btn alt sm" data-a="edit" data-id="${c.id}">Edit</button><button class="btn alt sm" data-a="dup" data-id="${c.id}">Duplicate</button><button class="btn danger sm" data-a="del" data-id="${c.id}">Delete</button></div></div>`).join('');
+ L.innerHTML=cvs.slice().sort((a,b)=>b.updated-a.updated).map(c=>`<div class="card item"><div><b>${esc(c.name)}</b><br><small>${esc(c.dept)} · updated ${new Date(c.updated).toLocaleDateString()} · auto-deletes in ${left(c)}</small></div><div class="acts"><button class="btn sm" data-a="view" data-id="${c.id}">View</button><button class="btn alt sm" data-a="edit" data-id="${c.id}">Edit</button><button class="btn alt sm" data-a="dup" data-id="${c.id}">Duplicate</button><button class="btn danger sm" data-a="del" data-id="${c.id}">Delete</button></div></div>`).join('');
 }
 $('#list').onclick=e=>{
  const b=e.target.closest('button');if(!b)return;const id=b.dataset.id,c=cvs.find(x=>x.id===id);if(!c)return;
- if(b.dataset.a==='view'){curId=id;$('#paper').innerHTML=render(c);applyStyle(c);show('prev')}
+ if(b.dataset.a==='view'){curId=id;$('#paper').innerHTML=render(c);applyStyle(c);noteFor(c);show('prev')}
  if(b.dataset.a==='edit')openForm(c);
- if(b.dataset.a==='dup'){const n=JSON.parse(JSON.stringify(c));n.id='cv'+Date.now();n.name+=' (copy)';n.updated=Date.now();cvs.push(n);SV('cvs',cvs);renderList()}
+ if(b.dataset.a==='dup'){const n=JSON.parse(JSON.stringify(c));n.id='cv'+Date.now();n.name+=' (copy)';n.updated=n.created=Date.now();cvs.push(n);SV('cvs',cvs);renderList()}
  if(b.dataset.a==='del'&&confirm('Delete the CV of '+c.name+'? This cannot be undone.')){cvs=cvs.filter(x=>x.id!==id);SV('cvs',cvs);renderList()}
 };
 
-/* ---------- FORM (Create / Update) ---------- */
-const F=['name','dept','place','phone','email','level','role','focus','obj','skills','interests','langs'];
+/* ---------- FORM ---------- */
+const F=['name','dept','phone','email','level','role','focus','obj','skills','interests','langs'];
 function openForm(c){
  editId=c?c.id:null;$('#ftitle').textContent=c?'Edit CV':'New CV';$('#err').textContent='';
  $('#form').reset();$$('.row').forEach(r=>r.remove());
@@ -273,20 +329,21 @@ function collect(){
  o.photo=photo;return o;
 }
 $('#form').onsubmit=e=>{
- e.preventDefault();const o=collect(),er=$('#err');
+ e.preventDefault();const o=collect(),er=$('#err'),isNew=!editId;
  if(!o.name||!o.dept){er.textContent='Enter your name and department.';return}
  if(!/^[+0-9 ()-]{7,16}$/.test(o.phone)){er.textContent='Enter a valid phone number (digits, +, spaces, brackets or dashes).';$('#f-phone').focus();return}
  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(o.email)){er.textContent='Enter a valid email address.';$('#f-email').focus();return}
  o.link=o.link.filter(l=>l.url);for(const l of o.link){const u=normUrl(l.url);if(!u){er.textContent='This link is not valid: '+l.url;return}l.url=u}
  er.textContent='';o.updated=Date.now();
- if(editId){const i=cvs.findIndex(x=>x.id===editId);o.id=editId;o.style=cvs[i].style;cvs[i]=o}else{o.id='cv'+Date.now();cvs.push(o)}
+ if(editId){const i=cvs.findIndex(x=>x.id===editId);if(i<0){er.textContent='This CV was deleted (24-hour limit).';return}o.id=editId;o.style=cvs[i].style;o.created=cvs[i].created||Date.now();cvs[i]=o}else{o.id='cv'+Date.now();o.created=Date.now();cvs.push(o)}
  if(!SV('cvs',cvs))return;
- curId=o.id;$('#paper').innerHTML=render(o);applyStyle(o);renderList();show('prev');
+ curId=o.id;$('#paper').innerHTML=render(o);applyStyle(o);noteFor(o);renderList();show('prev');
+ if(isNew)setTimeout(()=>alert('CV saved. Please click “Download PDF” now and keep the file safe. For security, this CV is deleted automatically after 24 hours.'),100);
 };
 $('#b-new').onclick=()=>openForm(null);
 $('#b-cancel').onclick=()=>{renderList();show('list')};
 
-/* ---------- OBJECTIVES (generate) ---------- */
+/* ---------- OBJECTIVES ---------- */
 function keyFor(d){d=d.toLowerCase();return Object.keys(objs).find(k=>k.toLowerCase()===d)||Object.keys(objs).find(k=>d&&(k.toLowerCase().includes(d)||d.includes(k.toLowerCase())))||'General'}
 function fillObj(t,d){const r=$('#f-role').value.trim(),f=$('#f-focus').value.trim();return t.replace(/[{]dept[}]/g,d||'my field').replace(/[{]level[}]/g,$('#f-level').value).replace(/[{]role[}]/g,r?'the position of '+r:'a suitable opportunity').replace(/[{]skills[}]/g,f?'my skills in '+f:'my technical knowledge')}
 $('#b-saveobj').onclick=()=>{const d=$('#f-dept').value.trim(),t=$('#f-obj').value.trim(),er=$('#err');if(!d||!t){er.textContent='Enter the department and the objective first.';return}let k=Object.keys(objs).find(x=>x.toLowerCase()===d.toLowerCase());if(!k){k=d;objs[k]=[]}if(objs[k].includes(t)){er.textContent='This objective is already saved.';return}if(objs[k].length>=4){er.textContent='A department keeps up to 4 objectives. Delete one in Manage objectives first.';return}objs[k].push(t);SV('objs',objs);depts();er.textContent='Saved to '+k+'.'};
@@ -347,36 +404,11 @@ function render(o){
  const S=(t,b,ic)=>b?`<h2>${IC(ic)}${t}</h2>${b}`:'';
  const lines=t=>(t||'').split('\n').map(x=>x.trim()).filter(Boolean);
 
- /* Render Clean Structured Education Grid */
- const edu=o.edu.map(x=>`
-  <div class="ed-item">
-   <div class="ed-grid">
-    <div class="ed-deg">${esc(x.deg)}</div>
-    <div class="ed-inst">${esc(x.inst)}</div>
-    <div class="ed-dur">${esc(x.dur)}</div>
-    <div class="ed-meta">${esc(x.score)}</div>
-   </div>
-  </div>`).join('');
+ const edu=o.edu.length?`<table class="ed-tbl"><thead><tr><th>Degree / Course</th><th>Institute / School</th><th>Duration</th><th>Marks/CGP</th></tr></thead><tbody>${o.edu.map(x=>`<tr><td>${esc(x.deg)}</td><td>${esc(x.inst)}</td><td>${esc(x.dur)}</td><td>${esc(x.score)}</td></tr>`).join('')}</tbody></table>`:'';
 
- /* Render Projects: Capped at 3 features + GitHub & Demo links */
  const pr=o.proj.map((x,i)=>{
-  const ghUrl=normUrl(x.github);
-  const demoUrl=normUrl(x.demo);
-  const projectBullets=lines(x.pts).slice(0, 3); // Restrict to top 3 bullet points
-  
-  return `
-   <div class="pj-wrap">
-    <div class="pj-header">
-     <span class="pj-title">${i+1}. ${esc(x.title)}</span>
-     <div class="pj-links">
-      ${ghUrl ? `<a href="${esc(ghUrl)}" target="_blank" rel="noopener">${IC('github')} Code</a>` : ''}
-      ${demoUrl ? `<a href="${esc(demoUrl)}" target="_blank" rel="noopener">${IC('globe')} Demo</a>` : ''}
-     </div>
-    </div>
-    <ul class="pj-list">
-     ${projectBullets.map(l=>`<li>${esc(l)}</li>`).join('')}
-    </ul>
-   </div>`;
+  const ghUrl=normUrl(x.github),demoUrl=normUrl(x.demo),pts=lines(x.pts).slice(0,3);
+  return `<div class="pj-wrap"><div class="pj-header"><span class="pj-title">${i+1}. ${esc(x.title)}</span><div class="pj-links">${ghUrl?`<a href="${esc(ghUrl)}" target="_blank" rel="noopener">${IC('github')} Code</a>`:''}${demoUrl?`<a href="${esc(demoUrl)}" target="_blank" rel="noopener">${IC('globe')} Demo</a>`:''}</div></div><ul class="pj-list">${pts.map(l=>`<li>${esc(l)}</li>`).join('')}</ul></div>`;
  }).join('');
 
  const sk=lines(o.skills).length?`<ul>${lines(o.skills).map(l=>`<li>${esc(l)}</li>`).join('')}</ul>`:'';
@@ -388,15 +420,39 @@ function render(o){
  +S('Career objective',o.obj?`<p>${esc(o.obj)}</p>`:'','target')+S('Education',edu,'edu')+S('Academic projects',pr,'code')+S('Technical skills',sk,'zap')+S('Areas of interest',it?`<p>${it}</p>`:'','star')+S('Certification',ce,'award')+S('Additional information',lg?`<p><b>Languages:</b> ${lg}</p>`:'','info');
 }
 
-function fit(){const w=$('#pwrap').clientWidth,p=$('#paper');p.style.zoom=Math.min(1,(w-8)/794)}
+/* A4 auto-fit: shrink text until content fits one page, then scale page to screen */
+function fit(){
+ const p=$('#paper'),w=$('#pwrap').clientWidth,s=getStyle(cvs.find(x=>x.id===curId));
+ p.style.zoom=1;let fs=+s.size;p.style.setProperty('--fs',fs+'px');
+ while(p.scrollHeight>1122&&fs>7.5){fs-=.25;p.style.setProperty('--fs',fs+'px')}
+ p.style.zoom=Math.min(1,(w-8)/794);
+}
 window.addEventListener('resize',()=>{if(!$('#v-prev').hidden)fit()});
-window.addEventListener('beforeprint',()=>{$('#paper').style.zoom=1});
-window.addEventListener('afterprint',fit);
+window.addEventListener('beforeprint',()=>{if(!$('#v-prev').hidden){const p=$('#paper');p.style.zoom=1}});
+window.addEventListener('afterprint',()=>{if(!$('#v-prev').hidden)fit()});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(!$('#v-prev').hidden)fit()});
 $('#p-pdf').onclick=()=>{try{window.print()}catch(e){alert('Printing is blocked here. Open this page in a full browser tab and try again.')}};
 $('#p-back').onclick=()=>{renderList();show('list')};
 $('#p-edit').onclick=()=>{const c=cvs.find(x=>x.id===curId);if(c)openForm(c)};
+$('#p-del').onclick=()=>{const c=cvs.find(x=>x.id===curId);if(c&&confirm('Delete this CV permanently? Make sure you have downloaded the PDF.')){cvs=cvs.filter(x=>x.id!==curId);SV('cvs',cvs);curId=null;renderList();show('list')}};
 
-const FONTS={'Segoe UI / Calibri':'"Segoe UI",Calibri,Arial,sans-serif','Poppins':'Poppins,"Segoe UI",sans-serif','Roboto':'Roboto,Arial,sans-serif','Open Sans':'"Open Sans",Arial,sans-serif','Montserrat':'Montserrat,Arial,sans-serif','Lora (serif)':'Lora,Georgia,serif','Merriweather (serif)':'Merriweather,Georgia,serif'};
+const FONTS={
+ 'Segoe UI / Calibri':'"Segoe UI",Calibri,Carlito,Arial,sans-serif',
+ 'Arial / Helvetica':'Arial,Helvetica,sans-serif',
+ 'Times New Roman':'"Times New Roman",Times,serif',
+ 'Georgia':'Georgia,"Times New Roman",serif',
+ 'Cambria':'Cambria,Georgia,serif',
+ 'Garamond':'"EB Garamond",Garamond,Georgia,serif',
+ 'Libre Baskerville':'"Libre Baskerville",Baskerville,Georgia,serif',
+ 'Lato':'Lato,Arial,sans-serif',
+ 'Source Sans':'"Source Sans 3","Segoe UI",Arial,sans-serif',
+ 'Inter':'Inter,"Segoe UI",Arial,sans-serif',
+ 'Roboto':'Roboto,Arial,sans-serif',
+ 'Open Sans':'"Open Sans",Arial,sans-serif',
+ 'Montserrat':'Montserrat,Arial,sans-serif',
+ 'Poppins':'Poppins,"Segoe UI",sans-serif',
+ 'Lora (serif)':'Lora,Georgia,serif',
+ 'Merriweather (serif)':'Merriweather,Georgia,serif'};
 const COLORS=[['#0e8a8a','#1b4d5c'],['#2563eb','#1e3a8a'],['#b45309','#78350f'],['#7c3aed','#4c1d95'],['#be123c','#881337'],['#374151','#111827']];
 function getStyle(c){return Object.assign({font:Object.keys(FONTS)[0],size:'14',color:0},c&&c.style)}
 function applyStyle(c){const s=getStyle(c),p=$('#paper'),k=COLORS[s.color]||COLORS[0];p.style.setProperty('--ff',FONTS[s.font]||FONTS[Object.keys(FONTS)[0]]);p.style.setProperty('--fs',s.size+'px');p.style.setProperty('--ac',k[0]);p.style.setProperty('--ac2',k[1]);$('#s-font').value=s.font;$('#s-size').value=s.size;$$('#s-sw .sw').forEach((b,i)=>b.classList.toggle('on',i==s.color))}
@@ -406,7 +462,12 @@ function setStyle(part){const c=cvs.find(x=>x.id===curId);if(!c)return;c.style=O
 $('#s-font').onchange=e=>setStyle({font:e.target.value});
 $('#s-size').onchange=e=>setStyle({size:e.target.value});
 $('#s-sw').onclick=e=>{const b=e.target.closest('.sw');if(b)setStyle({color:+b.dataset.i})};
-depts();renderList();show('list');
+
+/* ---------- Close (×) button on notices ---------- */
+document.addEventListener('click',e=>{const b=e.target.closest('.note-x');if(b)b.closest('.note').hidden=true});
+
+purge();depts();renderList();show('list');
+setInterval(()=>{const gone=purge();if(gone){const was=curId;renderList();if(was&&!cvs.some(x=>x.id===was)){curId=null;alert('For your security a CV was deleted automatically after 24 hours.');show('list')}}else if(!$('#v-list').hidden)renderList()},30000);
 </script>
 </body>
 </html>
